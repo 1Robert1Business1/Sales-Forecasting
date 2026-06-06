@@ -1,0 +1,40 @@
+# =============================================================================
+# Sales Forecasting — pinned environment
+# Target: Python 3.11 (3.10 / 3.12 also supported)
+# =============================================================================
+
+# Core data
+numpy==1.26.4
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+# scipy pinned to <1.15 — statsmodels 0.14.4 uses the private
+# scipy._lib._util._lazywhere which was removed in scipy 1.15+.
+scipy==1.14.1
+
+# Visualisation
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# Classical / statistical time series
+statsmodels==0.14.4
+pmdarima==2.0.4
+
+# Prophet (interpretable holiday / event decomposition)
+prophet==1.1.6
+
+# Deep learning (LSTM)
+tensorflow==2.16.2
+
+# ML utilities (scaling, metrics, splits)
+scikit-learn==1.5.2
+
+# UK bank holidays (England & Wales)
+holidays==0.57
+
+# Notebooks
+jupyterlab==4.2.5
+ipykernel==6.29.5
+nbformat==5.10.4
+
+# Testing
+pytest==8.3.3

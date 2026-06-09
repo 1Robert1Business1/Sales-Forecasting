@@ -10,8 +10,8 @@ dist/
 .installed.cfg
 *.egg
 
-# Virtual environments
-.venv/
+# Virtual environments (incl. scratch venvs like .venv-model)
+.venv*
 venv/
 env/
 ENV/

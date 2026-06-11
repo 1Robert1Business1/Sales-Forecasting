@@ -1,0 +1,6 @@
+model,MASE mean,MASE median,MAE (£/day),RMSE (£/day),vs naive (MAE)
+"SARIMAX airline (0,1,1)(0,1,1,7)",0.662,0.585,204.0,249.0,-30%
+"SARIMAX +AR(1)  (1,1,1)(0,1,1,7)",0.66,0.585,204.0,248.0,-30%
+"LSTM (modest, no future-regressor path)",0.777,0.729,240.0,300.0,-18%
+Prophet,0.643,0.576,198.0,238.0,-32%
+SeasonalNaive (baseline),0.946,0.918,292.0,370.0,+0%

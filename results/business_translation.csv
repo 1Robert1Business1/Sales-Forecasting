@@ -1,0 +1,11 @@
+metric,£/day
+mean absolute error,204
+RMSE,249
+"relative error, annual mean",7.1 %
+"relative error, Saturday",4.7 %
+"relative error, Tuesday",10.2 %
+95 % service-level safety stock (1.645 × RMSE),409
+  as a % of an average day,14 %
+  as a % of Saturday peak,9 %
+  as a % of Tuesday trough,20 %
+MAE reduction vs SeasonalNaive,30 %

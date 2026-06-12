@@ -145,6 +145,30 @@ class SARIMAXModel(ForecastModel):
         exog = X_future.values.astype(float) if X_future is not None else None
         return np.asarray(self._fit_res.forecast(steps=h, exog=exog), dtype=float)
 
+    def predict_interval(
+        self,
+        h: int,
+        X_future: Optional[pd.DataFrame] = None,
+        alpha: float = 0.05,
+    ) -> pd.DataFrame:
+        """Mean forecast plus a (1 − α) prediction interval.
+
+        Returns a DataFrame with columns ``mean``, ``mean_se``, ``lower``,
+        ``upper``. Intervals come from the SARIMAX state-space forecast
+        variance and assume **roughly normal** one-step errors — they are
+        a plan-level cover, not a tail-risk guarantee. Actual tail risk on
+        event nights (cup-final shocks, weather-driven swings, etc.) runs
+        higher than the Gaussian assumption implies.
+        """
+        if self._fit_res is None:
+            raise RuntimeError("predict_interval() called before fit()")
+        exog = X_future.values.astype(float) if X_future is not None else None
+        fc = self._fit_res.get_forecast(steps=h, exog=exog)
+        summary = fc.summary_frame(alpha=alpha)
+        return summary.rename(
+            columns={"mean_ci_lower": "lower", "mean_ci_upper": "upper"}
+        )[["mean", "mean_se", "lower", "upper"]]
+
     @property
     def aic(self) -> float:
         if self._fit_res is None:
